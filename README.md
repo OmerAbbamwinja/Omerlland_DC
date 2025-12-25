@@ -10,7 +10,7 @@ Les tâches prioritaires remonteront automatiquement en haut de votre liste pour
 ## 🔐 Authentification
 avec stockage locale dans le `localStorage` du navigateur.
 
-*Accès par défaut : 
+##Accès par défaut : 
   - Utilisateur : "admin"
   - Mot de passe :"admin"
 
@@ -49,5 +49,10 @@ Le thème utilise une palette "Prestige Black & Gold" :
 "style.css" (Design)
 "script.js" (Logique & Tri)
 
-Notre Team vous remercie.
-@ Omer - Rolland - Apolline - Charité.
+##Notre Team vous remercie.
+@ Omer - Rollande - Apolline - Charité.
+- Lien GitHub	:https://github.com/OmerAbbamwinja/Omerlland_DC   
+		 https://omerabbamwinja.github.io/Omerlland_DC/
+- Lien Youtub 	:
+- Lien render 	: https://omerlland-dc.onrender.com 
+- Netlify	: https://omerlland-dc.netlify.app/
