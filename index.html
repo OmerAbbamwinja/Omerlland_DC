@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omerlland DC | Excellence Task Manager </title>
+    <link rel="icon" type="image/png" href="Omerlland DC.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="auth-container">
+        <div class="auth-card">
+            <h2 id="auth-title">Connexion - Omerlland DC</h2>
+            <form id="auth-form">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="submit" id="auth-btn">Se connecter</button>
+            </form>
+            <p id="auth-toggle">Pas de compte ? <span onclick="toggleAuth()">S'inscrire</span></p>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <button id="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> QUITTER LA SESSION
+        </button>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo-area">
+                <h1>OMERLLAND <span class="gold-text">DC </span></h1>
+                <div class="gold-line"></div>
+            </div>
+            <h1><p class="tagline">ORGANISATION DE HAUTE PRÉCISION DANS LA GESTION DES TÂCHE</p></h1>
+        </header>
+
+        <div class="progress-wrapper">
+            <div class="progress-info">
+                <span>Progression des objectifs</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <i class="fas fa-search gold-text"></i>
+            <input type="text" id="search-bar" placeholder="Rechercher une mission...">
+        </div>
+
+        <section class="glass-panel">
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="Nouvelle tâche..." required>
+                <select id="priority-input">
+                    <option value="3">Priorité Haute</option>
+                    <option value="2" selected>Priorité Moyenne</option>
+                    <option value="1">Priorité Basse</option>
+                </select>
+                <button type="submit" class="btn-gold-main">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </form>
+        </section>
+
+        <div class="stats-container">
+            <span id="stat-count">0 Missions</span>
+            <span class="separator">|</span>
+            <span id="stat-done">0 Terminées</span>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div class="export-area" style="text-align: center; margin-bottom: 20px;">
+            <button id="export-pdf" class="btn-outline-gold">
+            <i class="fas fa-file-pdf"></i> EXPORTER RAPPORT PDF
+            </button>
+        </div>
+
+<footer class="footer-container">
+    <div class="footer-links">
+        <a href="qui-sommes-nous.pdf" target="_blank" class="btn-footer">
+            <i class="fas fa-info-circle"></i> QUI SOMMES-NOUS ?
+        </a>
+        <a href="mailto:sparteabbamwinja@gmail.com?subject=Contact Omerlland DC" class="btn-footer">
+            <i class="fas fa-envelope"></i> CONTACT
+        </a>
+    </div>
+    <p class="copyright">© 2024 Omerlland DC - Excellence & Précision</p>
+</footer>
+
+    </div>
+
+    <div id="congrats-message" class="congrats-hidden">
+        <i class="fas fa-crown gold-text"></i>
+        <p>Toutes les missions sont accomplies. Excellent travail, Chef !</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
+<!-- accès direct à github -->
+
+<div class="github-link">
+    <a href="https://github.com/omerabbamwiwnja/Omerlland_DC" target="_blank">
+        <i class="fab fa-github"></i> Voir mon code sur GitHub
+    </a>
+</div>
+
+</body>
+</html>

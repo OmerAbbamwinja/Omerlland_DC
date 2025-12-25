@@ -1,0 +1,404 @@
+:root {
+    --deep-black: #050505;
+    --rich-black: #0d0d0d;
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f1c40f 100%);
+    --gold-solid: #d4af37;
+    --text-gold: #e5c100;
+    --text-white: #f4f4f4;
+    --border-gold: rgba(212, 175, 55, 0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--deep-black);
+    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container { width: 100%; max-width: 600px; }
+
+header { text-align: center; margin-bottom: 30px; }
+
+h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 5px; }
+.gold-text { color: var(--gold-solid); }
+.gold-line { width: 50px; height: 3px; background: var(--gold-gradient); margin: 10px auto; }
+.tagline { font-size: 0.7rem; letter-spacing: 3px; color: var(--gold-solid); opacity: 0.8; }
+
+/* Recherche */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: var(--rich-black);
+    border: 1px solid var(--border-gold);
+    padding: 10px 15px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+#search-bar {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    margin-left: 10px;
+    outline: none;
+}
+
+/* Formulaire */
+.glass-panel {
+    background: var(--rich-black);
+    border: 1px solid var(--border-gold);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#task-form { display: flex; gap: 10px; }
+
+input[type="text"], select {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+}
+
+#task-input { flex: 2; border-bottom: 1px solid var(--gold-solid); }
+
+.btn-gold-main {
+    background: var(--gold-gradient);
+    border: none;
+    width: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.btn-gold-main:hover { transform: scale(1.05); }
+
+
+.btn-outline-gold {
+    background: transparent;
+    border: 1px solid var(--gold-solid);
+    color: var(--gold-solid);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-outline-gold:hover {
+    background: var(--gold-gradient);
+    color: black;
+}
+
+
+
+/* Liste */
+ul { list-style: none; }
+
+li {
+    background: var(--rich-black);
+    border: 1px solid var(--border-gold);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+li:hover { border-color: var(--gold-solid); }
+
+.task-content { display: flex; flex-direction: column; }
+.prio-label { font-size: 0.6rem; text-transform: uppercase; color: var(--gold-solid); font-weight: bold; }
+.task-title { font-size: 1rem; }
+.completed .task-title { text-decoration: line-through; opacity: 0.4; }
+
+.actions button {
+    background: transparent;
+    border: none;
+    color: var(--gold-solid);
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* conteneur parent pour permettre le positionnement relatif */
+.progress-wrapper {
+    position: relative; /*important pour ancrer le message */
+    margin: 20px 0;
+    padding: 0 5px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--gold-solid);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-gold);
+}
+
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--gold-gradient);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+#congrats-message {
+    /* positionnement flottant */
+    position: absolute;
+    right: 0;
+    top: 40px; /* Ajustez selon la hauteur de votre barre de progression */
+    z-index:10;
+
+    text-align: right;
+    padding: 10px 15px;
+    border: 1px solid var(--gold-solid);
+    border-right : 4px solid var(--gold-solid); /*accentue la bordure droit */
+    background: rgba(10, 10, 10, 0.95); /* Fond plus opaque pour ne pas voir à travers */
+    border-radius: 8px 0 0 8px; /* arrondi seulement le coté gauche pour l'effet bordure */
+
+    width: auto;
+    max-width: 250px; /* Largeur fixe pour éviter l'encombrement */
+    transition: all 0.6s cubic-bezier (0.68, -0.55, 0.27, 1.55);
+    box-shadow : -5px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.congrats-hidden {
+    opacity: 0;
+    transform: translateX(100%);/* Disparait complètement à droite*/
+    pointer-events: none;
+}
+
+.congrats-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#congrats-message i {
+    color: var(--gold-solid);
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+#congrats-message p {
+    display : inline; /* Met le texte sur la même ligne que l'icône */
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.stats-container { text-align: center; margin-bottom: 15px; color: var(--gold-solid); font-size: 0.8rem; }
+.separator { margin: 0 10px; opacity: 0.5; }
+
+.footer-container {
+    margin-top: 40px;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-gold);
+    text-align: center;
+    background: rgba(15, 15, 15, 0.8);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.btn-footer {
+    text-decoration: none;
+    color: var(--gold-solid);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border: 1px solid var(--gold-solid);
+    border-radius: 5px;
+    transition: 0.3s all ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-footer:hover {
+    background: var(--gold-gradient);
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.copyright {
+    color: #666;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+/*connexion*/
+:root {
+    --gold: #D4AF37;
+    --dark-bg: #0a0a0a;
+    --dark-card: #1a1a1a;
+}
+
+#auth-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--dark-bg);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+.auth-card {
+    background: var(--dark-card);
+    padding: 2rem;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    text-align: center;
+    width: 320px;
+}
+
+.auth-card h2 { color: var(--gold); margin-bottom: 1.5rem; }
+
+.auth-card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    outline: none;
+}
+
+.auth-card input:focus { border-color: var(--gold); }
+
+.auth-card button {
+    width: 100%;
+    padding: 10px;
+    background: var(--gold);
+    color: black;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-card button:hover { opacity: 0.8; }
+
+#auth-toggle { color: #888; margin-top: 15px; font-size: 0.9rem; }
+#auth-toggle span { color: var(--gold); cursor: pointer; text-decoration: underline; }
+
+
+#logout-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#logout-btn:hover {
+    background: var(--gold);
+    color: black;
+}
+/* date et heure de réalisation des tâche*/
+.task-item {
+    display: flex;
+    flex-direction: column; /* Pour mettre la date sous le texte */
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.task-date {
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/*déconnexion*/
+/* Style du bouton de déconnexion flottant */
+#logout-btn {
+    position: fixed; /* Fixe le bouton par rapport à la fenêtre */
+    left: 20px;      /* Distance du bord gauche */
+    bottom: 20px;    /* Distance du bas de l'écran */
+    z-index: 1001;   /* Passe au-dessus de tout le reste */
+
+    background: rgba(15, 15, 15, 0.9);
+    color: #ff4d4d;  /* Rouge pour l'alerte */
+    border: 1px solid #ff4d4d;
+    padding: 12px 18px;
+    border-radius: 50px; /* Forme arrondie moderne */
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#logout-btn:hover {
+    background: #ff4d4d;
+    color: white;
+    transform: scale(1.1); /* Petit effet de grossissement */
+}
+
+/* Masquer le bouton si l'utilisateur n'est pas connecté */
+#main-content[style*="display: none"] ~ #logout-btn {
+    display: none;
+}
+/*accès direct github*/
+.github-link {
+    text-align: center;
+    margin: 20px;
+}
+
+.github-link a {
+    background-color: #24292e; /* Couleur officielle de GitHub */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.github-link a:hover {
+    background-color: #444d56;
+}
+.github-link a i {
+    margin-right: 8px;
+}
